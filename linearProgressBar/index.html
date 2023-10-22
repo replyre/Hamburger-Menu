@@ -31,7 +31,7 @@
         background-color: rgb(255, 30, 30);
         width: 0%;
         border-radius: 10px;
-        transition: all 2s ease-in-out;
+        transition: all 1s;
       }
     </style>
   </head>
@@ -42,10 +42,16 @@
     <div class="text"></div>
     <script>
       let cnt = 0;
+      let per = 0;
       red = setInterval(() => {
         let bar = document.querySelector(".progress");
+        let percentage = setInterval(() => {
+          per += 1;
+          if (per >= cnt) clearInterval(percentage);
+          document.querySelector(".text").innerHTML = `<p>${per}%</p>`;
+        }, 100);
         cnt += 10;
-        document.querySelector(".text").innerHTML = `<p>${cnt}%</p>`;
+
         if (cnt == 100) clearInterval(red);
         bar.style.width = cnt + "%";
         console.log(cnt);
