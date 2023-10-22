@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Bar</title>
+    <style>
+      body {
+        width: 100vw;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+      }
+      .container {
+        width: 90%;
+        background-color: rgb(214, 207, 207);
+        height: 10px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 2px;
+      }
+      .text {
+        color: white;
+      }
+      .progress {
+        height: 60%;
+        background-color: rgb(255, 30, 30);
+        width: 0%;
+        border-radius: 10px;
+        transition: all 2s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="progress"></div>
+    </div>
+    <div class="text"></div>
+    <script>
+      let cnt = 0;
+      red = setInterval(() => {
+        let bar = document.querySelector(".progress");
+        cnt += 10;
+        document.querySelector(".text").innerHTML = `<p>${cnt}%</p>`;
+        if (cnt == 100) clearInterval(red);
+        bar.style.width = cnt + "%";
+        console.log(cnt);
+      }, 1000);
+    </script>
+  </body>
+</html>
